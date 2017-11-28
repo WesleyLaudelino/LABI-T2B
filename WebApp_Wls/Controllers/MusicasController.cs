@@ -52,6 +52,8 @@ namespace WebApp_Wls.Controllers
             {
                 db.Musicas.Add(musica);
                 db.SaveChanges();
+                TempData["Mensagem"] = "Cadastro realizado com sucesso !!";
+
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +86,8 @@ namespace WebApp_Wls.Controllers
             {
                 db.Entry(musica).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Mensagem"] = "Atualização realizada com sucesso";
+
                 return RedirectToAction("Index");
             }
             return View(musica);
@@ -112,6 +116,8 @@ namespace WebApp_Wls.Controllers
             Musica musica = db.Musicas.Find(id);
             db.Musicas.Remove(musica);
             db.SaveChanges();
+            TempData["Mensagem"] = "Exclusão realizada com Sucesso !";
+
             return RedirectToAction("Index");
         }
 

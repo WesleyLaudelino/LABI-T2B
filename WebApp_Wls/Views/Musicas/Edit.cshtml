@@ -5,7 +5,10 @@
 }
 
 <h2>Edit</h2>
-
+@if (TempData["Mensagem"] != null)
+{
+    <p class="alert-success">@TempData["Mensagem"]</p>
+}
 
 @using (Html.BeginForm())
 {
