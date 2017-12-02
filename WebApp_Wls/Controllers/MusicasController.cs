@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApp_Wls.Models;
+using PagedList;
+
 
 namespace WebApp_Wls.Controllers
 {
@@ -15,9 +17,22 @@ namespace WebApp_Wls.Controllers
         private SisMusicaContext db = new SisMusicaContext();
 
         // GET: Musicas
-        public ActionResult Index()
+        public ActionResult Index(int? pagina)
         {
-            return View(db.Musicas.ToList());
+            try
+            {
+                int tamanhoPagina = 2;
+                int numeroPagina = pagina ?? 1;
+                //return View(db.Musicas.ToList());
+                return View(db.Musicas.OrderBy(p => p.Titulo).ToPagedList(numeroPagina, tamanhoPagina));
+              
+
+            }
+            catch(Exception err)
+            {
+                return View();
+            }
+            
         }
 
         // GET: Musicas/Details/5

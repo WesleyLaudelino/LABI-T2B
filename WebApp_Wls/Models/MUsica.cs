@@ -8,6 +8,7 @@ namespace WebApp_Wls.Models
 {
     public class Musica
     {
+        [Key]
         public int Id { get; set; }
         [Required(ErrorMessage ="Título é obrigatório")]
         [MaxLength(400, ErrorMessage ="Máximo 400 caracteres")]
