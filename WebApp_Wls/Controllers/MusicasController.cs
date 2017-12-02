@@ -21,7 +21,7 @@ namespace WebApp_Wls.Controllers
         {
             try
             {
-                int tamanhoPagina = 2;
+                int tamanhoPagina = 5;
                 int numeroPagina = pagina ?? 1;
                 //return View(db.Musicas.ToList());
                 return View(db.Musicas.OrderBy(p => p.Titulo).ToPagedList(numeroPagina, tamanhoPagina));

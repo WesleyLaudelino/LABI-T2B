@@ -1,5 +1,6 @@
-﻿@model IEnumerable<WebApp_Wls.Models.Musica>
-
+﻿@model PagedList.IPagedList<WebApp_Wls.Models.Musica>
+@using PagedList
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Músicas";
 }
@@ -18,16 +19,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Titulo)
+            @Html.DisplayName("Titulo")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Categoria)
+            @Html.DisplayName("Categoria")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TipoMidia)
+            @Html.DisplayName("TipoMidia")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataCadastro)
+            @Html.DisplayName("DataCadastro")
         </th>
         <th></th>
     </tr>
@@ -55,3 +56,5 @@
 }
 
 </table>
+Página @Model.PageNumber de @Model.PageCount
+@Html.PagedListPager(Model, Page => Url.Action("Index", new { pagina = Page}))
